@@ -1,0 +1,30 @@
+.container{
+    margin: 5rem 4rem;
+}
+
+
+.hader{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.trip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid rgb(59, 59, 59);
+}
+
+.input-data{
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+.worker input[type='text']{
+    width: 20rem;
+}
+
+.w1, .w2 {
+    margin-top: 0.3rem;
+}

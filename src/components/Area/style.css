@@ -1,0 +1,21 @@
+
+.area{
+    padding: 1.5rem;
+    box-shadow: rgba(0,0,0,0.35) 0px 5px 15px;
+    border-radius: 15px;
+    margin-top: 2rem;
+}
+
+.info-area{
+    display: flex;
+    flex-direction: row;
+}
+
+
+.info-area .number{
+    width: 30%;
+}
+.info-area .number{
+    width: 30%;
+}
+

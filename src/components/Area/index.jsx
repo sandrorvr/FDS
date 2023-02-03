@@ -5,18 +5,21 @@ import Trip from '../Trip';
 
 function Area(props) {
   const allTrips = Array(props.area_nTrips).fill().map((el, index)=>`${props.area_id}T${index}`)
-  const [infoArea, setInfoArea] = useState({})
+  const [infoArea, setInfoArea] = useState([])
 
   function saveWorkers(nameWorker, id_trip, wkID){
-
-    setInfoArea({...infoArea, ...{[id_trip]: {[wkID]:nameWorker}}})
-        
-    console.log(infoArea);
-
+    setInfoArea([...infoArea, {id:wkID, name:nameWorker, trip:id_trip}])
   }
 
   function checkWorkers(w, id){
-    
+    const trip =  document.getElementById(id);
+    if(
+      infoArea.map(obj => obj.name).includes(w)
+      ){
+        trip.style.backgroundColor = 'red';
+      }else{
+        trip.style.backgroundColor = 'green';
+      }
   }
 
   return (

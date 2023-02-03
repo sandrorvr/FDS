@@ -4,27 +4,19 @@ import './style.css'
 import Trip from '../Trip';
 
 function Area(props) {
-  const tripData = {}
   const allTrips = Array(props.area_nTrips).fill().map((el, index)=>`${props.area_id}T${index}`)
-  for(let trpID of allTrips){
-    tripData[trpID] = {wk: null, id:null}
-  }
-  const [trip, setTrip] = useState(tripData)
+  const [infoArea, setInfoArea] = useState({})
 
-  function saveWorkers(worker, id_trip){
-    setTrip(trip, trip[id_trip]={wk: worker, id:id_trip});
-    console.log(trip, worker, id_trip)
+  function saveWorkers(nameWorker, id_trip, wkID){
+
+    setInfoArea({...infoArea, ...{[id_trip]: {[wkID]:nameWorker}}})
+        
+    console.log(infoArea);
+
   }
 
   function checkWorkers(w, id){
-    for(let trp of allTrips){
-      if(trp.wk === w){
-        document.getElementById(id).style.backgroundColor = 'red';
-      }
-      else{
-        document.getElementById(id).style.backgroundColor = 'green';
-      }
-    }
+    
   }
 
   return (

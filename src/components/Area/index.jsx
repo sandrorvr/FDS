@@ -7,8 +7,16 @@ function Area(props) {
   const allTrips = Array(props.area_nTrips).fill().map((el, index)=>`${props.area_id}T${index}`)
   const [infoArea, setInfoArea] = useState([])
 
-  function saveWorkers(nameWorker, id_trip, wkID){
-    setInfoArea([...infoArea, {id:wkID, name:nameWorker, trip:id_trip}])
+  function saveWorkers(targetElement, id_trip){
+    if(targetElement.name != ''){
+      setInfoArea([...infoArea, {id:targetElement.name, name:targetElement.value, trip:id_trip}])
+      targetElement.classList.toggle('realceValidation')
+    }else{
+      const indexWK = infoArea.map(obj => obj.name).indexOf(targetElement.name);
+      delete infoArea[indexWK];
+      setInfoArea(infoArea);
+    }
+    console.log(infoArea)
   }
 
   function checkWorkers(w, id){

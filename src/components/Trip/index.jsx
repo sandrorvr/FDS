@@ -13,12 +13,14 @@ function addWorker(id, props) {
                 }
                 onKeyDown={
                     (e) => {
-                        if (e.key == 'Enter') props.saveWorkers(e.target.value, props.trip_id, e.target.name);
+                        if (e.key == 'Enter'){
+                            props.saveWorkers(e.target, props.trip_id);
+                        }
                     }
                 }
                 type="text"
                 name={`Worker${id}`}
-                id={id}
+                id={`${props.trip_id}W${id}`}
             />
         </div>
     );

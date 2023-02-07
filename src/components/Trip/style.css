@@ -15,10 +15,17 @@
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid rgb(59, 59, 59);
+    padding: 0.3rem;
 }
 
 .input-data{
     margin: 0.5rem 0 0.5rem 0;
+    padding: 0.3rem;
+    margin: 0.3rem;
+}
+
+select{
+    padding: 0.3rem;
 }
 
 .worker input[type='text']{
@@ -26,5 +33,5 @@
 }
 
 .wk{
-    margin-top: 0.3rem;
+    margin-top: 0.5rem;
 }

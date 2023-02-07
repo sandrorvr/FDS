@@ -1,20 +1,17 @@
-import { useState } from 'react'
+import { useState, useContext} from 'react'
 import './style.css'
+import {contextFDS} from '../Fds'
+
 
 function addWorker(id, props) {
     return (
         <div key={id} className="wk">
             <input type="checkbox" value="sup" name="SUP" />
             <input
-                onChange={
-                    (e) => {
-                        props.checkWorkers(e.target.value, props.trip_id, e.target.name)
-                    }
-                }
                 onKeyDown={
                     (e) => {
                         if (e.key == 'Enter'){
-                            props.saveWorkers(e.target, props.trip_id);
+                            ctxFDS.saveWorkers(e.target, props.trip_id);
                         }
                     }
                 }
@@ -27,6 +24,7 @@ function addWorker(id, props) {
 }
 
 function Trip(props) {
+    const ctxFDS = useContext(contextFDS);
     const [data, setData] = useState([]);
     const [inputWorker, setInputWorker] = useState([]);
     const locs = props.locs;
@@ -66,7 +64,9 @@ function Trip(props) {
                 </select>
             </div>
             <div id='test' className="input-data worker">
-                <button onClick={() => setInputWorker([...inputWorker, addWorker(inputWorker.length, props)])}>ADD Worker</button>
+                <button onClick={() => setInputWorker(
+                                                        [...inputWorker, addWorker(inputWorker.length, props)]
+                                                    )}>ADD Worker</button>
                 {inputWorker}
             </div>
         </div>

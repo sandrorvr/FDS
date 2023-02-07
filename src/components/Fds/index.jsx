@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, createContext, useContext} from 'react';
 import './style.css';
 import Area from '../Area';
 
+export const contextFDS = createContext();
+
 function Fds(props) {
-  //const [count, setCount] = useState(0)
+
+  const [infoArea, setInfoArea] = useState([])
+
+  function saveWorkers(targetElement, id_trip){
+    if(targetElement.name != ''){
+      setInfoArea([...infoArea, {id:targetElement.name, name:targetElement.value, trip:id_trip}])
+      targetElement.classList.toggle('realceValidation')
+    }else{
+      const indexWK = infoArea.map(obj => obj.name).indexOf(targetElement.name);
+      delete infoArea[indexWK];
+      setInfoArea(infoArea);
+    }
+  }
+
   const areas = [
     { 
       id: 'A001', 
@@ -34,6 +49,7 @@ function Fds(props) {
     }
   ];
   return (
+    <contextFDS.Provider value={{saveWorkers: saveWorkers}}>
     <div className="Fds">
       {
         areas.map(area => {
@@ -49,6 +65,7 @@ function Fds(props) {
         })
       }
     </div>
+    </contextFDS.Provider>
   );
 }
 
